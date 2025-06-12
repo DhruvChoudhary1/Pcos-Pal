@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PCOS Diagnosis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>PCOS Predictor</h1>
+    <form id="pcos-form">
+      <label>Age: <input type="number" name="age" required></label>
+      <label>BMI: <input type="number" name="bmi" step="0.1" required></label>
+      <label>Menstrual Irregularity (1 = Yes, 0 = No): <input type="number" name="menstrual_irregularity" min="0" max="1" required></label>
+      <label>Testosterone Level (ng/dL): <input type="number" name="testosterone" step="0.1" required></label>
+      <label>Antral Follicle Count: <input type="number" name="follicle_count" required></label>
+      <button type="submit">Predict</button>
+    </form>
+    <div id="result"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
