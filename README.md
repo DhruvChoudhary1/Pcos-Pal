@@ -1,4 +1,4 @@
-# 🧬 PCOS Diagnosis Web App
+# 🧬 PCOS Pal Web App
 
 A machine learning-powered web application that predicts whether a person is likely to have PCOS (Polycystic Ovary Syndrome) based on key health inputs like age, BMI, menstrual irregularity, testosterone levels, and antral follicle count.
 
