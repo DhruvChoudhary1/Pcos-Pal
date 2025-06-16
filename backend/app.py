@@ -6,7 +6,7 @@ import pandas as pd
 app = Flask(__name__)
 CORS(app)
 
-# Load trained model and scaler
+
 model = joblib.load('pcos_model.pkl')
 scaler = joblib.load('scaler.pkl')
 
