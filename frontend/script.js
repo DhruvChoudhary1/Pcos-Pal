@@ -4,12 +4,14 @@ document.getElementById('pcos-form').addEventListener('submit', async function (
   const formData = new FormData(this);
 
   const data = {
-    age: Number(formData.get("age")),
-    bmi: Number(formData.get("bmi")),
-    menstrual_irregularity: Number(formData.get("menstrual_irregularity")),
-    testosterone: Number(formData.get("testosterone")),
-    follicle_count: Number(formData.get("follicle_count"))
-  };
+  user_id: localStorage.getItem("user_id"), // <-- ADD THIS
+  age: Number(formData.get("age")),
+  bmi: Number(formData.get("bmi")),
+  menstrual_irregularity: Number(formData.get("menstrual_irregularity")),
+  testosterone: Number(formData.get("testosterone")),
+  follicle_count: Number(formData.get("follicle_count"))
+};
+
 
   try {
     const response = await fetch("http://127.0.0.1:5000/predict", {

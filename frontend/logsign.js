@@ -22,38 +22,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     
-    if (loginForm) {
-        loginForm.addEventListener('submit', (event) => {
-            event.preventDefault(); 
-            const username = document.getElementById('username').value;
-            
+    loginForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-            
-            console.log(`Login attempt with username: ${username}`);
+    const email = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-            alert('Login successful! Redirecting to the main page...');
-            window.location.href = 'index.html'; // Redirect to index.html
+    try {
+        const res = await fetch("http://127.0.0.1:5000/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
         });
+
+        const result = await res.json();
+
+        if (res.ok) {
+            alert("Login successful!");
+            // Save user ID in localStorage for prediction
+            localStorage.setItem("user_id", result.user_id);
+            window.location.href = "index.html";
+        } else {
+            alert("Login failed: " + result.error);
+        }
+    } catch (err) {
+        alert("Error during login: " + err.message);
     }
+    console.log("Logging in with:", email, password);
+
+
+});
+
 
     
-    if (signupForm) {
-        signupForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Prevent actual form submission
-            const newUsername = document.getElementById('newUsername').value;
-            
-            
-            console.log(`Signup attempt with username: ${newUsername}`);
+   signupForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); 
 
-            alert('Sign up successful! Please login with your new account.');
-            
-            
-            signupForm.style.display = 'none';
-            loginForm.style.display = 'block'; 
-            
-            
-            signupForm.reset(); 
-            
+    const name = document.getElementById('newUsername').value;
+    const email = document.getElementById('newEmail').value;
+    const password = document.getElementById('newPassword').value;
+
+    try {
+        const res = await fetch("http://127.0.0.1:5000/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, password })
         });
+
+        const result = await res.json();
+
+        if (res.ok) {
+            alert("Sign up successful! Please login with your new account.");
+            signupForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            signupForm.reset();
+        } else {
+            alert("Signup failed: " + result.error);
+        }
+    } catch (err) {
+        alert("Error during signup: " + err.message);
     }
+});
 });
