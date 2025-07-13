@@ -1,44 +1,98 @@
+/* Reset & base styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: #f9f9f9;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f9e0e3, #e6d4f1); /* soft pink to lavender gradient */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
+/* Container styling */
 .container {
   background: #fff;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #ccc;
-  width: 350px;
+  padding: 40px 30px;
+  border-radius: 20px; /* more rounded */
+  box-shadow: 0 12px 40px rgba(195, 120, 189, 0.15); /* gentle purple shadow */
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
+.container:hover {
+  transform: translateY(-5px); /* subtle lift on hover */
+}
+
+/* Heading */
+h1 {
+  color: #b26dae; /* muted plum color */
+  font-size: 2.2em;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+/* Labels */
 label {
   display: block;
-  margin: 15px 0 5px;
+  margin: 18px 0 6px;
+  text-align: left;
+  color: #5d3b58; /* deeper plum */
+  font-weight: 600;
+  font-size: 0.95em;
 }
 
-input {
+/* Inputs */
+input[type="number"] {
   width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #e0cfe2;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #faf7fb; /* soft off-white background */
 }
 
+input[type="number"]:focus {
+  border-color: #d287c9;
+  box-shadow: 0 0 0 0.2rem rgba(210, 135, 201, 0.25);
+  outline: none;
+}
+
+/* Button styling */
 button {
   width: 100%;
-  padding: 10px;
-  background: #007bff;
+  padding: 12px;
+  background: linear-gradient(90deg, #d287c9, #a05da1); /* pinkish purple gradient */
   border: none;
   color: white;
-  font-weight: bold;
-  margin-top: 20px;
+  font-weight: 600;
+  margin-top: 28px;
+  border-radius: 10px;
   cursor: pointer;
+  font-size: 1.1em;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
 }
 
+button:hover {
+  box-shadow: 0 6px 18px rgba(160, 93, 161, 0.3);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Result styling */
 #result {
-  margin-top: 20px;
-  font-size: 16px;
-  color: green;
+  margin-top: 25px;
+  font-size: 1.1em;
+  color: #28a745; /* success green */
+  font-weight: 600;
 }
